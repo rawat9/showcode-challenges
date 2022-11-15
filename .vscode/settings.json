@@ -1,0 +1,14 @@
+{
+  "python.analysis.typeCheckingMode": "basic",
+  "editor.fontSize": 12,
+  "pythonTestExplorer.testplanPath": "/test_*.py",
+  "python.testing.unittestArgs": [
+    "-v",
+    "-s",
+    "./Visa_Simple Clearing to Settlement",
+    "-p",
+    "test*.py"
+  ],
+  "python.testing.pytestEnabled": false,
+  "python.testing.unittestEnabled": true
+}
