@@ -1,5 +1,5 @@
-from solution import Solution
 import unittest
+from src.lowest_average_spending.solution import Solution
 
 
 class SolutionTests(unittest.TestCase):

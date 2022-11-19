@@ -1,5 +1,5 @@
-from solution import Solution
 import unittest
+from src.visa_simple_clearing_to_settlement.solution import Solution
 
 
 class ClearingTests(unittest.TestCase):

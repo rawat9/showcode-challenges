@@ -1,5 +1,5 @@
 import unittest
-from solution import Solution
+from src.encryption_problems.solution import Solution
 
 
 class TestSum(unittest.TestCase):

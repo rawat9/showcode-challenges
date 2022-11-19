@@ -1,4 +1,4 @@
-class TreasureHunter:
+class Solution:
     def parse_roman_numerals(self, input):
         roman = {
             "I": 1,

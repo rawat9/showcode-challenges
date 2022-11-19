@@ -1,5 +1,5 @@
-from solution import Solution
 import unittest
+from src.next_shopping_bag_discount_v5.solution import Solution
 
 
 class ShoppingBagTests(unittest.TestCase):

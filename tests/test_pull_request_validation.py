@@ -1,5 +1,5 @@
 import unittest
-from solution import Solution
+from src.pull_request_validation.solution import Solution
 
 
 class TestSum(unittest.TestCase):
