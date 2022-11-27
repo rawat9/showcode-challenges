@@ -2,6 +2,12 @@ import re
 
 
 class Solution:
+    def __init__(self):
+        self.numbers_in_message = 0
+
+    def get_numbers(self, message):
+        self.numbers_in_message = len(re.findall("[0-9]+", message))
+
     def verify_card(self, length: int, prefix, message):
         possibilities = []
 
@@ -9,46 +15,66 @@ class Solution:
             for p in prefix:
                 pattern = f"{p}[0-9]" + "{" + f"{length - len(p)}" + "}"
                 found = re.findall(pattern, message)
-                if found:
-                    possibilities.append(found[0])
+                if found and self.numbers_in_message > 0:
+                    self.numbers_in_message -= len(found)
+                    possibilities += found
 
             return possibilities
 
         pattern = f"{prefix}[0-9]" + "{" + f"{length - len(prefix)}" + "}"
-        return re.findall(pattern, message)
+        found = re.findall(pattern, message)
+        if (
+            found
+            and self.numbers_in_message > 0
+            and len(found) <= self.numbers_in_message
+        ):
+            self.numbers_in_message -= len(found)
+            return found
+
+        return []
 
     def get_card_details(self, message):
-        card_number = ""
-        card_distributor = "NONE"
-
-        isAmex = self.verify_card(15, ("34", "37"), message)
+        self.get_numbers(message)
         isMasterCard = self.verify_card(16, ("51", "52", "53", "54", "55"), message)
+        isAmex = self.verify_card(15, ("34", "37"), message)
         isVisa = self.verify_card(13, "4", message)
 
-        if isAmex:
-            card_number = isAmex[0]
+        all_possibles = isMasterCard + isAmex + isVisa
+        card_distributors = list(map(self.get_card_distributor, all_possibles))
+
+        if not card_distributors:
+            return [["NONE"], all_possibles]
+
+        return [card_distributors, all_possibles]
+
+    def get_card_distributor(self, card_number: str):
+        card_distributor = "NONE"
+
+        if card_number.startswith(("34", "37")):
             card_distributor = "AMEX"
 
-        elif isMasterCard:
-            card_number = isMasterCard[0]
+        elif card_number.startswith(("51", "52", "53", "54", "55")):
             card_distributor = "MASTERCARD"
 
-        elif isVisa:
-            card_number = isVisa[0]
+        elif card_number.startswith("4"):
             card_distributor = "VISA"
 
-        return [card_distributor, card_number]
-
-    def get_card_distributor(self, message):
-        return self.get_card_details(message)[0]
+        return card_distributor
 
     def redact_card_details(self, message):
-        return [self.get_card_distributor(message), self.get_encoded(message)]
+        return self.get_card_details(message)[0] + [self.get_encoded(message)]
 
     def get_encoded(self, message):
-        card_number = self.get_card_details(message)[1]
-        if not card_number:
+        card_numbers = self.get_card_details(message)[1]
+        if not card_numbers:
             return message
 
-        message = message.replace(card_number, "*" * len(card_number))
+        for card_number in card_numbers:
+            print(card_number)
+            message = message.replace(card_number, "*" * len(card_number))
+
         return message
+
+
+sol = Solution()
+print(sol.redact_card_details("5111111111111111 and 343434343434343 and 4111111111111"))
