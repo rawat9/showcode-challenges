@@ -82,6 +82,91 @@ class SolutionTests(unittest.TestCase):
         )
 
     def test11(self):
+        solution = Solution()
+        self.assertEqual(
+            solution.redact_card_details("598241111111111104454"),
+            ["VISA", "5982*************4454"],
+        )
+
+    def test12(self):
+        solution = Solution()
+        self.assertEqual(
+            solution.redact_card_details("22254121212121212123333"),
+            ["MASTERCARD", "222****************3333"],
+        )
+
+    def test13(self):
+        solution = Solution()
+        self.assertEqual(
+            solution.redact_card_details("11111111113434343434343431111111111"),
+            ["AMEX", "1111111111***************1111111111"],
+        )
+
+    def test14(self):
+        solution = Solution()
+        self.assertEqual(solution.redact_card_details(""), ["NONE", ""])
+
+    def test15(self):
+        solution = Solution()
+        self.assertEqual(solution.redact_card_details(" "), ["NONE", " "])
+
+    def test16(self):
+        solution = Solution()
+        self.assertEqual(
+            solution.redact_card_details("4111111111110 and 4111111111112"),
+            ["VISA", "VISA", "************* and *************"],
+        )
+
+    def test17(self):
+        solution = Solution()
+        self.assertEqual(
+            solution.redact_card_details(
+                "343434343434343 and 343434343434344 and 343434343434345"
+            ),
+            [
+                "AMEX",
+                "AMEX",
+                "AMEX",
+                "*************** and *************** and ***************",
+            ],
+        )
+
+    def test18(self):
+        solution = Solution()
+        self.assertEqual(
+            solution.redact_card_details(
+                "5111111111111111 and 5111111111111112 and 5111111111111113"
+            ),
+            [
+                "MASTERCARD",
+                "MASTERCARD",
+                "MASTERCARD",
+                "**************** and **************** and ****************",
+            ],
+        )
+
+    def test19(self):
+        solution = Solution()
+        self.assertEqual(
+            solution.redact_card_details("5111111111111111 and 343434343434343"),
+            ["MASTERCARD", "AMEX", "**************** and ***************"],
+        )
+
+    def test20(self):
+        solution = Solution()
+        self.assertEqual(
+            solution.redact_card_details(
+                "5111111111111111 and 343434343434343 and 4111111111111"
+            ),
+            [
+                "MASTERCARD",
+                "AMEX",
+                "VISA",
+                "**************** and *************** and *************",
+            ],
+        )
+
+    def test21(self):
         result = Solution()
         self.assertEqual(
             result.redact_card_details(
@@ -93,7 +178,7 @@ class SolutionTests(unittest.TestCase):
             ],
         )
 
-    def test12(self):
+    def test22(self):
         result = Solution()
         self.assertEqual(
             result.redact_card_details("dont read this -> 54114111111111111"),
