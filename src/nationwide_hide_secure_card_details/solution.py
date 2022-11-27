@@ -70,11 +70,6 @@ class Solution:
             return message
 
         for card_number in card_numbers:
-            print(card_number)
             message = message.replace(card_number, "*" * len(card_number))
 
         return message
-
-
-sol = Solution()
-print(sol.redact_card_details("5111111111111111 and 343434343434343 and 4111111111111"))
