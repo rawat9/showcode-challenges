@@ -1,6 +1,7 @@
 {
   "python.analysis.typeCheckingMode": "basic",
   "editor.fontSize": 15,
+  "editor.tabSize": 4,
   "editor.fontFamily": "Fira Code",
   "python.testing.pytestEnabled": false,
   "python.testing.unittestEnabled": true,
