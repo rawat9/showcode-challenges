@@ -169,18 +169,6 @@ class SolutionTests(unittest.TestCase):
     def test21(self):
         result = Solution()
         self.assertEqual(
-            result.redact_card_details(
-                "dont read this -> 4111111111111 <- here's another one 340000000000000"
-            ),
-            [
-                "VISA",
-                "dont read this -> ************* <- here's another one 340000000000000",
-            ],
-        )
-
-    def test22(self):
-        result = Solution()
-        self.assertEqual(
             result.redact_card_details("dont read this -> 54114111111111111"),
             [
                 "MASTERCARD",
