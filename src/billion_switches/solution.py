@@ -1,6 +1,3 @@
-from more_itertools import map_reduce, map_if
-
-
 class Solution:
     def billion_switches(self, input):
         return sum(
@@ -9,7 +6,3 @@ class Solution:
                 enumerate(input),
             )
         )
-
-
-sol = Solution()
-print(sol.billion_switches([100, 100, 99]))
