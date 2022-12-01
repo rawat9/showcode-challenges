@@ -2,8 +2,9 @@
   "python.analysis.typeCheckingMode": "basic",
   "editor.fontSize": 15,
   "editor.tabSize": 4,
-  "editor.fontFamily": "Fira Code",
+  "editor.fontFamily": "MonoLisa",
   "python.testing.pytestEnabled": false,
   "python.testing.unittestEnabled": true,
-  "python.testing.unittestArgs": ["-v", "-s", "./tests", "-p", "test_*.py"]
+  "python.testing.unittestArgs": ["-v", "-s", "./tests", "-p", "test_*.py"],
+  "python.formatting.blackArgs": ["--line-length=90"]
 }
