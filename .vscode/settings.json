@@ -1,6 +1,6 @@
 {
   "python.analysis.typeCheckingMode": "basic",
-  "editor.fontSize": 15,
+  "editor.fontSize": 14,
   "editor.tabSize": 4,
   "editor.fontFamily": "MonoLisa",
   "python.testing.pytestEnabled": false,

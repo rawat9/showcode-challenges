@@ -4,14 +4,6 @@ import argparse
 root_folder = "./src"
 
 
-def get_packages() -> list[str]:
-    return [
-        f"src.{name}"
-        for name in os.listdir(root_folder)
-        if os.path.isdir(os.path.join(root_folder, name)) and name != "__pycache__"
-    ]
-
-
 def add_challenge(name: list[str]) -> None:
     formatted_name = "_".join(name).lower()
 
