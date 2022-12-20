@@ -20,5 +20,5 @@ From no laptop, to that really expensive model with all of the latest software a
 You should return -1 if the `MoneySaved` input x value should not be considered.
 
 ---
-- [solution.py]()
-- [test.py]
+- [solution.py](https://github.com/rawat9/showcode-challenges/blob/main/src/lloyds_saving_money/solution.py)
+- [test.py](https://github.com/rawat9/showcode-challenges/blob/main/tests/test_lloyds_saving_money.py)
