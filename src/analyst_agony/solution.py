@@ -1,18 +1,21 @@
+from more_itertools import split_at, split_after
+
+
 class Solution:
-    def _get_open_price(self, trades: list[str]) -> str:
+    def __get_open_price(self, trades: list[str]) -> str:
         return trades[0].split(",")[1]
 
-    def _get_close_price(self, trades: list[str]) -> str:
+    def __get_close_price(self, trades: list[str]) -> str:
         return trades[-1].split(",")[1]
 
-    def _get_volume(self, trades: list[str]) -> str:
+    def __get_volume(self, trades: list[str]) -> str:
         return str(sum(map(lambda x: int(x.split(",")[2]), trades)))
 
-    def _get_high_price(self, trades: list[str]):
+    def __get_high_price(self, trades: list[str]):
         prices = list(map(lambda x: float(x.split(",")[1]), trades))
         return f"{max(prices):.4f}"
 
-    def _get_low_price(self, trades: list[str]):
+    def __get_low_price(self, trades: list[str]):
         prices = list(map(lambda x: float(x.split(",")[1]), trades))
         return f"{min(prices):.4f}"
 
@@ -37,11 +40,11 @@ class Solution:
 
     def aggregate_ohlcv(self, trades: list[str]) -> list[str]:
         data = [
-            self._get_open_price(trades),
-            self._get_high_price(trades),
-            self._get_low_price(trades),
-            self._get_close_price(trades),
-            self._get_volume(trades),
+            self.__get_open_price(trades),
+            self.__get_high_price(trades),
+            self.__get_low_price(trades),
+            self.__get_close_price(trades),
+            self.__get_volume(trades),
         ]
 
         return [",".join(["0", *data])]
@@ -59,5 +62,6 @@ trades = [
     "118,13.9000,20",
 ]
 
-print(sol.split_by_hour(trades))
+# print(sol.split_by_hour(trades))
+
 t = [0, 25, 45, 59, 60, 75, 100, 118]
