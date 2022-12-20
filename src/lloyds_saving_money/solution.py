@@ -3,7 +3,7 @@ class Solution:
         self.counter = 0
 
     def number_of_days_to_save(self, moneySaved):
-        if moneySaved < 0 or moneySaved >= 74926:
+        if moneySaved < 0 or moneySaved > 74926:
             return -1
 
         total_days = 0
