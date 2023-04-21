@@ -8,8 +8,7 @@ def get_packages() -> list[str]:
     return [
         f"src.{name}"
         for name in os.listdir(root_folder)
-        if os.path.isdir(os.path.join(root_folder, name))
-        and name != "__pycache__"
+        if os.path.isdir(os.path.join(root_folder, name)) and name != "__pycache__"
     ]
 
 
